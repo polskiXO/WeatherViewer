@@ -11,10 +11,10 @@ struct HorizontalWeatherView: View {
     var weatherInfos: [WeatherInfo]
     var body: some View {
         ScrollView(.horizontal) {
-            LazyHStack {
+            LazyHStack (alignment: .bottom) {
                 ForEach(weatherInfos) { info in
                     WeatherView(weatherInfo: info)
-                        .scaleEffect(0.6)
+                        .padding(.horizontal, 10)
                 }
             }
         }

@@ -10,18 +10,21 @@ import SwiftUI
 struct WeatherView: View {
     var weatherInfo: WeatherInfo
     var body: some View {
-        VStack {
+        VStack (alignment: .center) {
+            // make the black circle become a black outline
             weatherInfo.getWeatherVisual(desc: self.weatherInfo.desc)
                 .renderingMode(.original)
                 .font(.largeTitle)
-                .padding(7)
+                .padding(8)
                 .background(.black)
                 .clipShape(Circle())
+                .overlay(Circle().stroke(Color.black, lineWidth: 2)) // add black outline to the circle
+                .shadow(radius: 7) // add shadow to the circle
             Text("\(weatherInfo.location)")
                 .font(.headline)
                 .fontWeight(.bold)
                 .bold()
-            Text("\(weatherInfo.temp)° Celcius")
+            Text("\(weatherInfo.temp)° Celsius")
         }
     }
 }
